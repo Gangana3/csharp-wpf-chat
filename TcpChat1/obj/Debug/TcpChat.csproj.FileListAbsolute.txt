@@ -1,0 +1,30 @@
+C:\Users\ganga\source\repos\TcpChat1\TcpChat1\bin\Debug\Resources\message.wav
+C:\Users\ganga\source\repos\TcpChat1\TcpChat1\bin\Debug\Tcp Chat.exe.config
+C:\Users\ganga\source\repos\TcpChat1\TcpChat1\bin\Debug\Tcp Chat.exe.manifest
+C:\Users\ganga\source\repos\TcpChat1\TcpChat1\bin\Debug\Tcp Chat.application
+C:\Users\ganga\source\repos\TcpChat1\TcpChat1\bin\Debug\Tcp Chat.exe
+C:\Users\ganga\source\repos\TcpChat1\TcpChat1\bin\Debug\Tcp Chat.pdb
+C:\Users\ganga\source\repos\TcpChat1\TcpChat1\bin\Debug\WpfAnimatedGif.dll
+C:\Users\ganga\source\repos\TcpChat1\TcpChat1\bin\Debug\WpfAnimatedGif.xml
+C:\Users\ganga\source\repos\TcpChat1\TcpChat1\obj\Debug\TcpChat.csprojResolveAssemblyReference.cache
+C:\Users\ganga\source\repos\TcpChat1\TcpChat1\obj\Debug\ChatPage.g.cs
+C:\Users\ganga\source\repos\TcpChat1\TcpChat1\obj\Debug\ConnectPage.g.cs
+C:\Users\ganga\source\repos\TcpChat1\TcpChat1\obj\Debug\MainPage.g.cs
+C:\Users\ganga\source\repos\TcpChat1\TcpChat1\obj\Debug\MainWindow.g.cs
+C:\Users\ganga\source\repos\TcpChat1\TcpChat1\obj\Debug\App.g.cs
+C:\Users\ganga\source\repos\TcpChat1\TcpChat1\obj\Debug\Tcp Chat_Content.g.cs
+C:\Users\ganga\source\repos\TcpChat1\TcpChat1\obj\Debug\Tcp Chat_MarkupCompile.cache
+C:\Users\ganga\source\repos\TcpChat1\TcpChat1\obj\Debug\Tcp Chat_MarkupCompile.lref
+C:\Users\ganga\source\repos\TcpChat1\TcpChat1\obj\Debug\ChatPage.baml
+C:\Users\ganga\source\repos\TcpChat1\TcpChat1\obj\Debug\ConnectPage.baml
+C:\Users\ganga\source\repos\TcpChat1\TcpChat1\obj\Debug\MainPage.baml
+C:\Users\ganga\source\repos\TcpChat1\TcpChat1\obj\Debug\MainWindow.baml
+C:\Users\ganga\source\repos\TcpChat1\TcpChat1\obj\Debug\Tcp Chat.g.resources
+C:\Users\ganga\source\repos\TcpChat1\TcpChat1\obj\Debug\TcpChat1.Properties.Resources.resources
+C:\Users\ganga\source\repos\TcpChat1\TcpChat1\obj\Debug\TcpChat.csproj.GenerateResource.cache
+C:\Users\ganga\source\repos\TcpChat1\TcpChat1\obj\Debug\TcpChat.csproj.CoreCompileInputs.cache
+C:\Users\ganga\source\repos\TcpChat1\TcpChat1\obj\Debug\Tcp Chat.exe.manifest
+C:\Users\ganga\source\repos\TcpChat1\TcpChat1\obj\Debug\Tcp Chat.application
+C:\Users\ganga\source\repos\TcpChat1\TcpChat1\obj\Debug\TcpChat.csproj.CopyComplete
+C:\Users\ganga\source\repos\TcpChat1\TcpChat1\obj\Debug\Tcp Chat.exe
+C:\Users\ganga\source\repos\TcpChat1\TcpChat1\obj\Debug\Tcp Chat.pdb

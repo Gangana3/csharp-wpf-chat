@@ -13,7 +13,7 @@ Fill the fields. pick a username, port, your friend's port and ip. Press submit.
 
 
 ### Step II:
-Now the app is waiting for your friend to connect. Tell your friend to connect you. In this case, he will have to set his port to 8002 and hid friend's port (your port) to 8000. In addition he should set the friend's IP to your ip address (In this case we are using the localhost IP so it is the same for both clients)
+Now the app is waiting for your friend to connect. Tell your friend to connect you. In this case, he will have to set his port to 8002 and his friend's port (your port) to 8000. In addition he should set the friend's IP to your ip address (In this case we are using the localhost IP so it is the same for both clients)
 ![Step 2](http://up419.siz.co.il/up2/fniuddnmnz5j.png)
 
 

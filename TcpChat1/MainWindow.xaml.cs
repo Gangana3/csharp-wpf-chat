@@ -28,28 +28,36 @@ namespace TcpChat1
             this.ResizeMode = ResizeMode.NoResize;
 
             var mainPage = new MainPage();
-            var connectPage = new ConnectPage();
-            var chatPage = new ChatPage();
 
-            connectPage.Connected += delegate (object sender, EventArgs e)
-            {
-            // When user connected to another user
-            this.Dispatcher.Invoke(() => this.mainFrame.NavigationService.Navigate(chatPage));
-            };
+            //User user = null;
+            //ConnectPage connectPage = null;
+            //ChatPage chatPage = null;
+
+            //mainPage.Submitted += delegate (object sender, EventArgs e)
+            //{
+            //    // When user submitted data successfully
+            //    this.mainFrame.NavigationService.Navigate(connectPage);
+            //    user = mainPage.User;
+            //};
+
+            //connectPage = new ConnectPage(user);
+            //chatPage = new ChatPage(user);
+
+            //connectPage.Connected += delegate (object sender, EventArgs e)
+            //{
+            //// When user connected to another user
+            //this.Dispatcher.Invoke(() => this.mainFrame.NavigationService.Navigate(chatPage));
+            //};
 
             
 
-            chatPage.ConnectionClosed += delegate (object sender, EventArgs e)
-            {
-            // After the connection is closed
-            this.Dispatcher.Invoke(() => this.mainFrame.Navigate(mainPage));
-            };
+            //chatPage.ConnectionClosed += delegate (object sender, EventArgs e)
+            //{
+            //// After the connection is closed
+            //this.Dispatcher.Invoke(() => this.mainFrame.Navigate(mainPage));
+            //};
 
-            mainPage.Submitted += delegate (object sender, EventArgs e)
-            {
-            // When user submitted data successfully
-            this.mainFrame.NavigationService.Navigate(connectPage);
-            };
+
 
             this.mainFrame.NavigationService.Navigate(mainPage);
         }

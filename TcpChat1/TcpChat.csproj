@@ -99,8 +99,8 @@
     <Compile Include="ConnectPage.xaml.cs">
       <DependentUpon>ConnectPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="GlobalData.cs" />
     <Compile Include="Message.cs" />
+    <Compile Include="Serialization.cs" />
     <Compile Include="User.cs" />
     <Page Include="ChatPage.xaml">
       <SubType>Designer</SubType>

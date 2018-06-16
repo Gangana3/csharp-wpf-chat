@@ -7,7 +7,8 @@ using System.Text.RegularExpressions;
 
 namespace TcpChat1
 {
-    class Message
+    [Serializable]
+    public class Message
     {
         private enum MessageParameter { username, friendIP, port, friendPort, timeFormed }; // All the parameters that are added to the message
 
@@ -29,19 +30,6 @@ namespace TcpChat1
 
             this.timeFormed = string.Format("{0}:{1}", hour, minute);
         }
-
-        public Message(string rawMessage)
-        {
-            this.content = GetMessageContent(rawMessage);
-            this.sender = new User(
-                username: GetParameterFromMessage(rawMessage, MessageParameter.username),
-                friendIP: GetParameterFromMessage(rawMessage, MessageParameter.friendIP),
-                port: int.Parse(GetParameterFromMessage(rawMessage, MessageParameter.port)),
-                friendPort: int.Parse(GetParameterFromMessage(rawMessage, MessageParameter.friendPort))
-                );
-            this.timeFormed = GetParameterFromMessage(rawMessage, MessageParameter.timeFormed);
-        }
-
 
         public string Content
         {
@@ -96,59 +84,9 @@ namespace TcpChat1
             }
         }
 
-
-        /// <summary>
-        /// Returns a specific parameter from message parameters
-        /// </summary>
-        /// <param name="rawMessage">A complete message including the parameters</param>
-        /// <param name="param">parameter to get</param>
-        /// <returns>a specific parameter from message parameters</returns>
-        private static string GetParameterFromMessage(string rawMessage, MessageParameter param)
-        {
-            string regexPattern = "";
-            switch (param)
-            {
-                case MessageParameter.friendIP:
-                    regexPattern = @".+friend_ip=(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})&";
-                    break;
-
-                case MessageParameter.username:
-                    regexPattern = @".+username=(\w*)&";
-                    break;
-
-                case MessageParameter.port:
-                    regexPattern = @".*port=(\d*)&";
-                    break;
-
-                case MessageParameter.friendPort:
-                    regexPattern = @".*friend_port=(\d*)&";
-                    break;
-
-                case MessageParameter.timeFormed:
-                    regexPattern = @".*time_formed=(\d{2}:\d{2})&";
-                    break;
-            }
-            int questionMarkIndex = rawMessage.LastIndexOf('?');
-            string parameters = rawMessage.Substring(questionMarkIndex);
-            Match match = Regex.Match(parameters, regexPattern);
-            return match.Groups[1].ToString();
-        }
-
-
-        /// <summary>
-        /// Returns a message content
-        /// </summary>
-        /// <param name="rawMessage">A complete message, including the parameters</param>
-        /// <returns>Message's content</returns>
-        private static string GetMessageContent(string rawMessage)
-        {
-            int questionMarkIndex = rawMessage.LastIndexOf('?');
-            return rawMessage.Substring(0, questionMarkIndex);
-        }
-
         public override string ToString()
         {
-            return string.Format("{0}?username={1}&friend_ip={2}&port={3}&friend_port={4}&time_formed={5}&", content, this.sender.Username, this.sender.FriendIP, this.sender.Port, this.sender.FriendPort, this.timeFormed);
+            return this.Content;
         }
     }
 }

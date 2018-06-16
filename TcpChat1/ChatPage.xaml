@@ -17,7 +17,7 @@
                  HorizontalScrollBarVisibility="Disabled" Margin="44,97,44,80">
             <TextBlock x:Name="chatTextBox" Foreground="#FFD1D39B" />
         </ScrollViewer>
-        <Label x:Name="header" Content="Connected To 127.0.0.1" HorizontalAlignment="Center" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FFE9E9E9" FontSize="24" Margin="272,38,272,0" />
+        <Label x:Name="header" Content="Connected To 127.0.0.1" HorizontalAlignment="Center" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FFE9E9E9" FontSize="24" Margin="272,38,108,0" Width="420" />
 
     </Grid>
 </Page>

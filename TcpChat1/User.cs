@@ -9,25 +9,29 @@ using System.Threading;
 
 namespace TcpChat1
 {
-    class User
+    [Serializable]
+    public class User
     {
-        const int TimeBetweenConnectionAttempts = 1000;  // In Miliseconds
         const int DefaultBufferSize = 1024;              // In Bytes
-
+        
         private string username;
         private string friendIP;
         private int port;
         private int friendPort;
-        private TcpListener tcpListener;
-        private TcpClient outputTcpClient;
-        private TcpClient inputTcpClient;
-        public event EventHandler Connected;
+        [NonSerialized] private TcpListener tcpListener;
+        [NonSerialized] private TcpClient outputTcpClient;
+        [NonSerialized] private TcpClient inputTcpClient;
+        [NonSerialized] private EventHandler connected;
 
+        public event EventHandler Connected {
+            add { connected += value; }
+            remove { connected -= value; }
+        }
 
         protected virtual void OnConnected()
         {
-            if (this.Connected != null)
-                Connected(this, EventArgs.Empty);
+            if (this.connected != null)
+                connected(this, EventArgs.Empty);
         }
 
 
@@ -60,9 +64,17 @@ namespace TcpChat1
             while (!isConnected)
             {
                 isConnected = this.TryToConnect();
-                if (!isConnected) Thread.Sleep(TimeBetweenConnectionAttempts);
             }
             this.OnConnected();
+        }
+
+
+        /// <summary>
+        /// Connect the the other client asynchronously
+        /// </summary>
+        public Task ConnectAsync()
+        {
+            return Task.Run(() => this.Connect());
         }
 
 
@@ -74,6 +86,7 @@ namespace TcpChat1
         {
             try
             {
+                const int connectionAttemptsFrequency = 1000;  // In miliseconds
                 this.outputTcpClient.Connect(new IPEndPoint(IPAddress.Parse(this.FriendIP), this.FriendPort));
 
                 const int attempts = 3;
@@ -85,9 +98,9 @@ namespace TcpChat1
                         // In case connected successfully without throwing an exception
                         return true;
                     }
-                    Thread.Sleep(TimeBetweenConnectionAttempts);
+                    Thread.Sleep(connectionAttemptsFrequency);
                 }
-                throw new Exception("Something went wrong!");   // In case all attempts failed
+                throw new Exception("All connection attempts failed");   // In case all attempts failed
             }
             catch (SocketException)
             {
@@ -104,8 +117,7 @@ namespace TcpChat1
         public void Send(string messageContent)
         {
             var message = new Message(messageContent, this);
-            byte[] buffer = Encoding.UTF8.GetBytes(message.ToString());
-            this.OutputStream.Write(buffer, 0, buffer.Length);
+            BinarySerialization.WriteObjectToStream<Message>(this.OutputStream, message);
         }
 
 
@@ -115,7 +127,7 @@ namespace TcpChat1
         /// <returns> The message from the other user </returns>
         public Message Receive()
         {
-            return new Message(ReadFromStream(this.InputStream));
+            return BinarySerialization.RetreiveObjectFromStream<Message>(this.InputStream);
         }
 
 

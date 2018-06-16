@@ -24,6 +24,7 @@ namespace TcpChat1
     {
         private static readonly object lockObj = new object();
 
+        private User user;
 
         public event EventHandler ConnectionClosed;   // After connection is closed
 
@@ -35,10 +36,10 @@ namespace TcpChat1
         }
 
 
-        public ChatPage()
+        public ChatPage(User user)
         {
             InitializeComponent();
-
+            this.user = user;
 
             RoutedEventHandler ReceiveMessages = delegate (object sender, RoutedEventArgs e)
             {
@@ -46,7 +47,7 @@ namespace TcpChat1
                 this.chatTextBox.Text = "";
 
                 // Change the header
-                this.header.Content = string.Format("Connected to {0}", GlobalData.user.FriendIP);
+                this.header.Content = string.Format("Connected to {0}", this.user.FriendIP);
 
                 // Receive messages in a different thread
                 var receiveMessagesThread = new Thread(
@@ -57,7 +58,7 @@ namespace TcpChat1
                         { 
                             while (true)
                             {
-                                Message message = GlobalData.user.Receive();  // Receive message
+                                Message message = this.user.Receive();  // Receive message
                                 
                                 // Print the received message and play a message sound
                                 this.AppendChatTextBox(string.Format("[{0}] {1}: {2}\n", message.TimeFormed, message.Sender.Username, message.Content));
@@ -69,9 +70,9 @@ namespace TcpChat1
                             this.Dispatcher.Invoke(() =>
                             {
                                 MessageBox.Show("The other user has left the chatroom!");
-                                GlobalData.user.CloseConnection();
+                                this.user.CloseConnection();
                                 this.OnConnectionClosed();
-
+                                this.NavigationService.Navigate(new MainPage());
                             });
                         }
                     });
@@ -102,7 +103,7 @@ namespace TcpChat1
             else
             {
                 // Send the message
-                GlobalData.user.Send(this.messageTextBox.Text);
+                this.user.Send(this.messageTextBox.Text);
 
                 // Print the message
                 var time = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, TimeZoneInfo.Local);

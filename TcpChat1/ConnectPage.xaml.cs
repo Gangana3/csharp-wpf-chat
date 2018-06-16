@@ -12,7 +12,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Threading;
 
 
 namespace TcpChat1
@@ -32,17 +31,17 @@ namespace TcpChat1
         }
 
 
-        public ConnectPage()
+        public ConnectPage(User user)
         {
             InitializeComponent();
 
-            this.Loaded += delegate (object sender, RoutedEventArgs e)
+            this.Loaded += async delegate (object sender, RoutedEventArgs e)
             {
-                GlobalData.user.Connected += (eventSender, eventArgs) => this.OnConnected();
-                var connectThread = new Thread(GlobalData.user.Connect);
-                connectThread.IsBackground = true;
-                connectThread.Start();
+                user.Connected += (eventSender, eventArgs) => this.OnConnected();
+                await user.ConnectAsync();  // Connect to the other client asynchronously
+                this.NavigationService.Navigate((new ChatPage(user)));
             };
+
         }
 
     }

@@ -23,8 +23,10 @@ namespace TcpChat1
     /// </summary>
     public partial class MainPage : Page
     {
-        public event EventHandler Submitted;
+        private User user;
 
+        public event EventHandler Submitted;
+        public User User { get { return this.user; } }
         
         protected virtual void OnSubmitted()
         {
@@ -153,8 +155,9 @@ namespace TcpChat1
                     friendPort: int.Parse(this.friendPort.Text)
                     );
 
-                GlobalData.user = user;
+                this.user = user;
                 this.OnSubmitted();
+                this.NavigationService.Navigate(new ConnectPage(user));
             }           
         }
     }

@@ -65,13 +65,13 @@ namespace TcpChat1
 
                 string[] split = this.timeFormed.Split(':');
 
-                string hours = split[0];
-                string minutes = split[1];
+                int hours = int.Parse(split[0]) + timeDifferences;
+                int minutes = int.Parse(split[1]);
+                string hoursString = hours.ToString() , minutesString = minutes.ToString();
+                if (hours < 10) hoursString = "0" + hours;
+                if (minutes < 10) minutesString = "0" + minutes;
 
-                if (int.Parse(hours) < 10) hours = "0" + hours;
-                if (int.Parse(minutes) < 10) minutes = "0" + minutes;
-
-                return string.Format("{0}:{1}", int.Parse(hours) + timeDifferences, minutes);
+                return string.Format("{0}:{1}", hoursString, minutesString);
             }
         }
 

@@ -1,4 +1,5 @@
 # C# WPF chat
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://paypal.me/organic5?locale.x=en_US)
 ## Information
 This chat application was developed using WPF framework, and built in System.Net and System.Net.Sockets libraries. 
 The chat is working without a proxy server so the connection is made directly between two IP endpoints, nothing is in between.
